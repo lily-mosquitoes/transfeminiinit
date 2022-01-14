@@ -1,13 +1,68 @@
+{% load tailwind_tags %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     {% block title %}<title>Transfeminiinit</Title>{% endblock %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% tailwind_css %}
     {% load static %}
+    <link rel="shortcut icon" href="{% static 'media/transfeminiinit-logo.png' %}">
+    <!-- Goggle Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
 </head>
-<body>
-    {% block sidebar %}<h1>Hello</h1>{% endblock %}
+<body class="bg-secondary-light">
+    {% block sidebar %}
+    <nav class="m-4 px-0 lg:px-4">
+        <div class="flex justify-between">
+            <div>
+                <img src="{% static 'media/transfeminiinit-logo.png' %}" class="float-left object-contain h-11 md:h-16">
+                <div class="flex"><h1 class="text-secondary-dark hover:text-primary-dark transition duration-300 text-4xl md:text-6xl font-roboto-condensed font-semibold mt-1"><a href="{% url 'home' %}">Transfeminiinit</a></h1></div>
+            </div>
+            <div class="hidden lg:flex items-center space-x-1">
+                <a class="px-4 text-secondary-dark hover:text-primary-dark transition duration-300 text-4xl" href="">info</a>
+                <a class="px-4 text-secondary-dark hover:text-primary-dark transition duration-300 text-4xl" href="">membership</a>
+                <a class="px-4 text-secondary-dark hover:text-primary-dark transition duration-300 text-4xl" href="">contact</a>
+            </div>
+            <!-- Mobile menu button -->
+            <div class="lg:hidden pt-2 pr-2">
+                <button class="outline-none mobile-menu-button text-secondary-dark">
+                    <svg class="w-8 h-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none" viewBox="0 0 24 24">
+                        <path d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div class="mobile-menu mx-4 mb-4">
+            <ul class="space-y-1">
+                <li><a class="block px-8 py-4 text-2xl bg-primary-light rounded">info</a></li>
+                <li><a class="block px-8 py-4 text-2xl bg-primary-light rounded">membership</a></li>
+                <li><a class="block px-8 py-4 text-2xl bg-primary-light rounded">contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    {% endblock %}
     {% block content %}{% endblock %}
 </body>
 </html>
+<script type="text/javascript">
+    const btn = document.querySelector("button.mobile-menu-button");
+    const menu = document.querySelector(".mobile-menu")
+
+    btn.addEventListener("click", () => {
+
+        if (menu.style.maxHeight) {
+            menu.style.maxHeight = null;
+            setTimeout(function(){
+                menu.classList.toggle("mt-4");
+            }, 200);
+        } else {
+            menu.classList.toggle("mt-4");
+            menu.style.maxHeight = "200px";
+        }
+    });
+</script>

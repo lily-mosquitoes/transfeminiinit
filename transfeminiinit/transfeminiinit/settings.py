@@ -30,6 +30,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'translation_manager',
     'website.apps.WebsiteConfig',
+    'tailwind',
+    'theme',
 ]
 
 MIDDLEWARE = [
@@ -133,3 +135,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # enforce SSL
 SECURE_SSL_REDIRECT = env.bool('SECURE_SSL_REDIRECT', default=True)
+
+# tailwind
+TAILWIND_APP_NAME = 'theme'
+INTERNAL_IPS = env.list('INTERNAL_IPS', default=["127.0.0.1",])
