@@ -1,5 +1,6 @@
 from django.db import models
 from parler.models import TranslatableModel, TranslatedFields
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.conf import settings
@@ -13,7 +14,7 @@ class Post(TranslatableModel):
 
     translations = TranslatedFields(
         title = models.CharField(max_length=250, verbose_name=_('post_title')),
-        body = models.TextField(verbose_name=_('post_body')),
+        body = RichTextUploadingField(verbose_name=_('post_body')),
 
         author = models.ForeignKey(User, on_delete=models.PROTECT, related_name='blog_posts', verbose_name=_('post_author')),
         slug = models.SlugField(max_length=250, unique_for_date='publish', verbose_name=_('post_slug')),

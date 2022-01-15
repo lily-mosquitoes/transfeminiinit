@@ -32,6 +32,8 @@ INSTALLED_APPS = [
     'tailwind',
     'theme',
     'parler',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -131,6 +133,12 @@ TIME_ZONE = 'UTC' # used to avoid DST issues in the database
 
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# media
+MEDIA_URL = "media/"
+MEDIA_ROOT = BASE_DIR / "media/"
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
 
 # Default primary key field type
 
