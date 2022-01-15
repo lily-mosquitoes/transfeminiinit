@@ -774,6 +774,10 @@ select {
   border-bottom-width: 1px;
 }
 
+.border-t {
+  border-top-width: 1px;
+}
+
 .border-primary-dark {
   border-color: #cd2653;;
 }
