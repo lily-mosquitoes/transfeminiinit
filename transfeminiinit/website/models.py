@@ -1,28 +1,32 @@
 from django.db import models
+from parler.models import TranslatableModel, TranslatedFields
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.conf import settings
+from django.utils.translation import gettext_lazy as _
 
-class Post(models.Model):
+class Post(TranslatableModel):
     STATUS_CHOICES = (
-        ('draft', 'Draft'),
-        ('published', 'Published'),
+        ('draft', _('post_status_draft')),
+        ('published', _('post_status_published')),
     )
 
-    title = models.CharField(max_length=250)
-    body = models.TextField()
+    translations = TranslatedFields(
+        title = models.CharField(max_length=250, verbose_name=_('post_title')),
+        body = models.TextField(verbose_name=_('post_body')),
 
-    author = models.ForeignKey(User, on_delete=models.PROTECT, related_name='blog_posts')
-    slug = models.SlugField(max_length=250, unique_for_date='publish')
+        author = models.ForeignKey(User, on_delete=models.PROTECT, related_name='blog_posts', verbose_name=_('post_author')),
+        slug = models.SlugField(max_length=250, unique_for_date='publish', verbose_name=_('post_slug')),
 
-    publish = models.DateTimeField(default=timezone.now)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+        publish = models.DateTimeField(default=timezone.now, verbose_name=_('post_publish')),
+        created = models.DateTimeField(auto_now_add=True, verbose_name=_('post_created')),
+        updated = models.DateTimeField(auto_now=True, verbose_name=_('post_updated')),
 
-    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
+        status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft', verbose_name=_('post_status')),
+    )
 
-    class Meta:
-        ordering = ('-publish',)
+    # class Meta:
+    #     ordering = ('-publish',)
 
     def __str__(self):
         return self.title

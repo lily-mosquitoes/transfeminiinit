@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'website.apps.WebsiteConfig',
     'tailwind',
     'theme',
+    'parler',
 ]
 
 MIDDLEWARE = [
@@ -102,6 +103,14 @@ LANGUAGES = (
     ('sv', 'Svenska'),
     ('en', 'English'),
 )
+
+PARLER_LANGUAGES = {
+    None: tuple({'code': lang[0],} for lang in LANGUAGES),
+    'default': {
+        'fallback': 'fi',
+        'hide_untranslated': False,
+    }
+}
 
 # for internationalization support
 USE_I18N = True

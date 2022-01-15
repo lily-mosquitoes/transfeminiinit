@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: webmaster@localhost\n"
-"POT-Creation-Date: 2022-01-15 16:48:09\n"
-"PO-Revision-Date: 2022-01-15 16:48:09\n"
+"POT-Creation-Date: 2022-01-15 19:50:50\n"
+"PO-Revision-Date: 2022-01-15 19:50:50\n"
 "Last-Translator: Server <root@localhost>\n"
 "Language-Team: English <webmaster@localhost>\n"
 "MIME-Version: 1.0\n"
@@ -30,6 +30,46 @@ msgstr "info"
 #: website/templatetags/nav_strings.py:16
 msgid "membership"
 msgstr "membership"
+
+#: website/models.py:18
+msgid "post_author"
+msgstr "Author"
+
+#: website/models.py:16
+msgid "post_body"
+msgstr "Body"
+
+#: website/models.py:22
+msgid "post_created"
+msgstr "Created"
+
+#: website/models.py:21
+msgid "post_publish"
+msgstr "Published"
+
+#: website/models.py:19
+msgid "post_slug"
+msgstr "URL identifier"
+
+#: website/models.py:25
+msgid "post_status"
+msgstr "Status"
+
+#: website/models.py:10
+msgid "post_status_draft"
+msgstr "Draft"
+
+#: website/models.py:11
+msgid "post_status_published"
+msgstr "Published"
+
+#: website/models.py:15
+msgid "post_title"
+msgstr "Title"
+
+#: website/models.py:23
+msgid "post_updated"
+msgstr "Updated"
 
 #: website/templatetags/nav_strings.py:8
 msgid "title"

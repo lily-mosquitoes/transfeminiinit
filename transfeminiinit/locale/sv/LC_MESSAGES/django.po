@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: webmaster@localhost\n"
-"POT-Creation-Date: 2022-01-15 16:48:09\n"
-"PO-Revision-Date: 2022-01-15 16:48:09\n"
+"POT-Creation-Date: 2022-01-15 19:50:50\n"
+"PO-Revision-Date: 2022-01-15 19:50:50\n"
 "Last-Translator: Server <root@localhost>\n"
 "Language-Team: English <webmaster@localhost>\n"
 "MIME-Version: 1.0\n"
@@ -15,14 +15,6 @@ msgstr ""
 msgid "contact"
 msgstr "kontakt"
 
-#: website/views.py:9
-msgid "home_message"
-msgstr "82u3892"
-
-#: website/views.py:8
-msgid "home_title"
-msgstr "Hdsalkdas"
-
 #: website/templatetags/nav_strings.py:12
 msgid "info"
 msgstr "info"
@@ -30,6 +22,10 @@ msgstr "info"
 #: website/templatetags/nav_strings.py:16
 msgid "membership"
 msgstr "medlemskap"
+
+#: website/models.py:19
+msgid "post_slug"
+msgstr "URL identifierare"
 
 #: website/templatetags/nav_strings.py:8
 msgid "title"
