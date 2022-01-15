@@ -1,0 +1,36 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.1\n"
+"Report-Msgid-Bugs-To: webmaster@localhost\n"
+"POT-Creation-Date: 2022-01-15 16:48:09\n"
+"PO-Revision-Date: 2022-01-15 16:48:09\n"
+"Last-Translator: Server <root@localhost>\n"
+"Language-Team: English <webmaster@localhost>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: website/templatetags/nav_strings.py:20
+msgid "contact"
+msgstr "contact"
+
+#: website/views.py:9
+msgid "home_message"
+msgstr "test"
+
+#: website/views.py:8
+msgid "home_title"
+msgstr "Welcome!"
+
+#: website/templatetags/nav_strings.py:12
+msgid "info"
+msgstr "info"
+
+#: website/templatetags/nav_strings.py:16
+msgid "membership"
+msgstr "membership"
+
+#: website/templatetags/nav_strings.py:8
+msgid "title"
+msgstr "Transfeminines"

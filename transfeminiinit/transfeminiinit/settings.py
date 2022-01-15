@@ -1,7 +1,6 @@
 from pathlib import Path
 import environ
 import os
-from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -99,9 +98,9 @@ LANGUAGE_CODE = 'fi'
 
 # supported languages
 LANGUAGES = (
-    ('fi', _('Finnish')),
-    ('sv', _('Swedish')),
-    ('en', _('English')),
+    ('fi', 'Suomi'),
+    ('sv', 'Svenska'),
+    ('en', 'English'),
 )
 
 # for internationalization support

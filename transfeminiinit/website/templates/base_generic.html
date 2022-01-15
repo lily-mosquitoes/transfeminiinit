@@ -1,9 +1,11 @@
 {% load tailwind_tags %}
+{% load i18n%}
+{% load nav_strings %}
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% block title %}<title>Transfeminiinit</Title>{% endblock %}
+    {% block title %}<title>{% title %}</Title>{% endblock %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% tailwind_css %}
@@ -14,18 +16,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
 </head>
-<body class="bg-secondary-light">
+<body class="flex flex-col min-h-screen bg-secondary-light">
     {% block sidebar %}
     <nav class="m-4 px-0 lg:px-4">
         <div class="flex justify-between">
             <div>
                 <img src="{% static 'media/transfeminiinit-logo.png' %}" class="float-left object-contain h-11 md:h-16">
-                <div class="flex"><h1 class="text-secondary-dark hover:text-primary-dark transition duration-300 text-4xl md:text-6xl font-roboto-condensed font-semibold mt-1"><a href="{% url 'home' %}">Transfeminiinit</a></h1></div>
+                <div class="flex"><h1 class="text-secondary-dark hover:text-primary-dark transition duration-300 text-4xl md:text-6xl font-roboto-condensed font-semibold mt-1"><a href="{% url 'home' %}">{% title %}</a></h1></div>
             </div>
             <div class="hidden lg:flex items-center space-x-1">
-                <a class="px-4 text-secondary-dark hover:text-primary-dark transition duration-300 text-4xl" href="">info</a>
-                <a class="px-4 text-secondary-dark hover:text-primary-dark transition duration-300 text-4xl" href="">membership</a>
-                <a class="px-4 text-secondary-dark hover:text-primary-dark transition duration-300 text-4xl" href="">contact</a>
+                <a class="px-4 text-secondary-dark hover:text-primary-dark transition duration-300 text-4xl" href="">{% info %}</a>
+                <a class="px-4 text-secondary-dark hover:text-primary-dark transition duration-300 text-4xl" href="">{% membership %}</a>
+                <a class="px-4 text-secondary-dark hover:text-primary-dark transition duration-300 text-4xl" href="">{% contact %}</a>
             </div>
             <!-- Mobile menu button -->
             <div class="lg:hidden pt-2 pr-2">
@@ -37,16 +39,37 @@
             </div>
         </div>
         <!-- Mobile menu -->
-        <div class="mobile-menu mx-4 mb-4 lg:hidden">
+        <div class="mobile-menu mx-4 mb-0 lg:hidden">
             <ul class="space-y-1">
-                <li><a class="block px-8 py-4 text-2xl bg-primary-light rounded text-secondary-dark hover:text-primary-dark transition duration-300" href="">info</a></li>
-                <li><a class="block px-8 py-4 text-2xl bg-primary-light rounded text-secondary-dark hover:text-primary-dark transition duration-300" href="">membership</a></li>
-                <li><a class="block px-8 py-4 text-2xl bg-primary-light rounded text-secondary-dark hover:text-primary-dark transition duration-300" href="">contact</a></li>
+                <li><a class="block px-8 py-4 text-2xl bg-primary-light rounded text-secondary-dark hover:text-primary-dark transition duration-300" href="">{% info %}</a></li>
+                <li><a class="block px-8 py-4 text-2xl bg-primary-light rounded text-secondary-dark hover:text-primary-dark transition duration-300" href="">{% membership %}</a></li>
+                <li><a class="block px-8 py-4 text-2xl bg-primary-light rounded text-secondary-dark hover:text-primary-dark transition duration-300" href="">{% contact %}</a></li>
             </ul>
         </div>
     </nav>
+    <main class="flex-grow">
     {% endblock %}
     {% block content %}{% endblock %}
+    </main>
+    <footer class="bg-secondary-dark py-3 px-0 lg:px-4">
+        <div class="flex">
+            <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                <input type="hidden" name="next" value="{{ redirect_to }}">
+                <input type="hidden" name="language" value="fi">
+                <input type="submit" value="suomi" class="block px-5 text-secondary-light hover:text-primary-dark">
+            </form>
+            <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                <input type="hidden" name="next" value="{{ redirect_to }}">
+                <input type="hidden" name="language" value="sv">
+                <input type="submit" value="svenska" class="block px-5 text-secondary-light hover:text-primary-dark">
+            </form>
+            <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                <input type="hidden" name="next" value="{{ redirect_to }}">
+                <input type="hidden" name="language" value="en">
+                <input type="submit" value="english" class="block px-5 text-secondary-light hover:text-primary-dark">
+            </form>
+        </div>
+    </footer>
 </body>
 </html>
 <script type="text/javascript">
