@@ -706,6 +706,10 @@ select {
   margin-bottom: 0px;
 }
 
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
 .mt-4 {
   margin-top: 1rem;
 }
@@ -718,24 +722,16 @@ select {
   margin-bottom: 0.5rem;
 }
 
-.mr-2 {
-  margin-right: 0.5rem;
+.mb-12 {
+  margin-bottom: 3rem;
 }
 
-.mt-5 {
-  margin-top: 1.25rem;
+.mb-20 {
+  margin-bottom: 5rem;
 }
 
-.mb-4 {
-  margin-bottom: 1rem;
-}
-
-.mb-5 {
-  margin-bottom: 1.25rem;
-}
-
-.mb-6 {
-  margin-bottom: 1.5rem;
+.mb-16 {
+  margin-bottom: 4rem;
 }
 
 .block {
@@ -770,14 +766,6 @@ select {
   height: 2rem;
 }
 
-.h-5 {
-  height: 1.25rem;
-}
-
-.h-10 {
-  height: 2.5rem;
-}
-
 .max-h-screen {
   max-height: 100vh;
 }
@@ -800,10 +788,6 @@ select {
 
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
-}
-
-.grid-cols-3 {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .flex-col {
@@ -850,10 +834,6 @@ select {
 
 .rounded {
   border-radius: 0.25rem;
-}
-
-.rounded-full {
-  border-radius: 9999px;
 }
 
 .border-b {
@@ -949,11 +929,6 @@ select {
 .py-0 {
   padding-top: 0px;
   padding-bottom: 0px;
-}
-
-.px-2 {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
 }
 
 .pt-2 {
@@ -1072,9 +1047,9 @@ select {
 }
 
 .mobile-menu {
-  max-height: 0;
+  height: 0px;
   overflow: hidden;
-  transition: max-height 0.2s ease-in-out;
+  transition: height 0.2s ease-in-out;
 }
 
 .hover\:text-primary-dark:hover {

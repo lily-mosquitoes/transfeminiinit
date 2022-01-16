@@ -10,8 +10,8 @@
         filter: none;
     }
     .mobile-menu {
-        max-height: 0;
+        height: 0px;
         overflow: hidden;
-        transition: max-height 0.2s ease-in-out;
+        transition: height 0.2s ease-in-out;
     }
 }

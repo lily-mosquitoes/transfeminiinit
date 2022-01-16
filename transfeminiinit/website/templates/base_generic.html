@@ -39,6 +39,15 @@
             </div>
         </div>
         <!-- Mobile menu -->
+        <noscript>
+            <div class="mt-4 mx-4 mb-0 lg:hidden">
+                <ul class="space-y-1">
+                    <li><a class="block px-8 py-4 text-2xl bg-primary-light rounded text-secondary-dark hover:text-primary-dark transition duration-300" href="">{% info %}</a></li>
+                    <li><a class="block px-8 py-4 text-2xl bg-primary-light rounded text-secondary-dark hover:text-primary-dark transition duration-300" href="">{% membership %}</a></li>
+                    <li><a class="block px-8 py-4 text-2xl bg-primary-light rounded text-secondary-dark hover:text-primary-dark transition duration-300" href="">{% contact %}</a></li>
+                </ul>
+            </div>
+        </noscript>
         <div class="mobile-menu mx-4 mb-0 lg:hidden">
             <ul class="space-y-1">
                 <li><a class="block px-8 py-4 text-2xl bg-primary-light rounded text-secondary-dark hover:text-primary-dark transition duration-300" href="">{% info %}</a></li>
@@ -49,7 +58,7 @@
     </nav>
     {% endblock %}
     <main class="flex-grow">
-        <div class="px-4 mb-6">
+        <div class="px-4 mb-20">
             <div class="bg-primary-light rounded">
             {% block content %}{% endblock %}
             </div>
@@ -72,17 +81,18 @@
 <script type="text/javascript">
     const btn = document.querySelector("button.mobile-menu-button");
     const menu = document.querySelector(".mobile-menu")
+    const click = new Event("click");
 
     btn.addEventListener("click", () => {
 
-        if (menu.style.maxHeight) {
-            menu.style.maxHeight = null;
+        if (menu.style.height > "0px") {
+            menu.style.height = "0px";
             setTimeout(function(){
                 menu.classList.toggle("mt-4");
             }, 200);
         } else {
             menu.classList.toggle("mt-4");
-            menu.style.maxHeight = "200px";
+            menu.style.height = "200px";
         }
     });
 </script>
