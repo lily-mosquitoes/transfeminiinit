@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: webmaster@localhost\n"
-"POT-Creation-Date: 2022-01-16 15:34:03\n"
-"PO-Revision-Date: 2022-01-16 15:34:03\n"
+"POT-Creation-Date: 2022-01-16 15:55:36\n"
+"PO-Revision-Date: 2022-01-16 15:55:36\n"
 "Last-Translator: Server <root@localhost>\n"
 "Language-Team: English <webmaster@localhost>\n"
 "MIME-Version: 1.0\n"
@@ -85,7 +85,7 @@ msgstr "Päivitetty"
 
 #: website/templatetags/website_extras.py:24
 msgid "read_more_cta"
-msgstr "lue lisää"
+msgstr "avaa koko julkaisu"
 
 #: transfeminiinit/settings.py:105
 msgid "Suomi"

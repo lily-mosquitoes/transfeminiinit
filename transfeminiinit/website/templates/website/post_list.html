@@ -3,25 +3,25 @@
 {% load website_extras %}
 
 {% block content %}
-<div class="p-10 grid grid-cols-1 md:grid-cols-3">
+<div class="p-10 grid grid-cols-1 md:grid-cols-3 gap-5">
     {% for post in post_list %}
     {% if post.status == 'published' %}
-    <div class="group rounded overflow-hidden shadow-lg bg-secondary-light">
+    <div class="group max-h-screen rounded overflow-hidden shadow-lg bg-secondary-light">
         <img src="{% static 'media/placeholder.webp' %}" alt="placeholder">
         <div class="px-6 py-4">
-            <div class="text-secondary-dark group-hover:text-primary-dark font-bold text-xl mb-1">
+            <div class="truncate text-secondary-dark group-hover:text-primary-dark font-bold text-xl mb-1">
                 {{ post.title }}
             </div>
             <div class="text-secondary-gray text-sm mb-2">
                 {{ post.published_string }} {{ post.publish|date }}
             </div>
-            <p class="text-secondary-dark text-base">
+            <p class="line-clamp-4 text-secondary-dark text-base">
                 {{ post.body|safe|striptags }}
             </p>
         </div>
         <div class="px-6 pt-1 pb-2">
             {% for tag in post.tags.all %}
-                <span class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-secondary-gray mr-2 mb-2">#{{ tag }}</span>
+                <span class="inline-block bg-gray-700 px-3 py-1 text-sm font-semibold text-secondary-gray mb-2">#{{ tag }}</span>
             {% endfor %}
         </div>
         <div class="px-4 py-0.5 bg-primary-dark font-semibold text-secondary-light text-sm">
