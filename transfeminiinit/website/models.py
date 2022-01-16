@@ -22,13 +22,13 @@ class Post(TranslatableModel):
     )
 
     translations = TranslatedFields(
-        title = models.CharField(max_length=120, verbose_name=_('post_title')),
-        description = models.CharField(max_length=180, blank=True, verbose_name=_('post_description')),
+        title = models.CharField(max_length=70, verbose_name=_('post_title')),
+        description = models.CharField(max_length=170, blank=True, verbose_name=_('post_description')),
         body = RichTextUploadingField(verbose_name=_('post_body')),
         tags = models.ManyToManyField('Tag', verbose_name=_('post_tags')),
 
         author = models.ForeignKey(User, on_delete=models.PROTECT, related_name='blog_posts', verbose_name=_('post_author')),
-        slug = models.SlugField(max_length=250, unique_for_date='publish', verbose_name=_('post_slug')),
+        slug = models.SlugField(max_length=70, unique_for_date='publish', verbose_name=_('post_slug')),
 
         publish = models.DateTimeField(default=timezone.now, verbose_name=_('post_publish')),
         created = models.DateTimeField(auto_now_add=True, verbose_name=_('post_created')),
