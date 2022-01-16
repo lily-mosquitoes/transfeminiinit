@@ -1,6 +1,6 @@
 {% load tailwind_tags %}
 {% load i18n%}
-{% load nav_strings %}
+{% load website_extras %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -47,9 +47,13 @@
             </ul>
         </div>
     </nav>
-    <main class="flex-grow">
     {% endblock %}
-    {% block content %}{% endblock %}
+    <main class="flex-grow">
+        <div class="px-4">
+            <div class="bg-primary-light rounded">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
     </main>
     <footer class="bg-secondary-dark py-3 px-0 lg:px-4">
         <div class="flex">

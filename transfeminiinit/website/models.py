@@ -31,3 +31,6 @@ class Post(TranslatableModel):
 
     def __str__(self):
         return self.title
+
+    def published_string(self):
+        return dict(self.STATUS_CHOICES)['published']

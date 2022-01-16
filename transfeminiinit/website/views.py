@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.utils import translation
 from django.utils.translation import gettext_lazy as _
+from .models import Post
+from django.views import generic
 
 def home(request):
     context = {
@@ -10,3 +12,21 @@ def home(request):
     }
 
     return render(request, 'home.html', context=context)
+
+# def post_list(request):
+#     posts = Post.objects.filter(translations__status='published').order_by('translations__publish')
+#
+#     return render(request, 'post_list.html', { 'posts': posts })
+#
+# def post_detail(request):
+#     post = get_object_or_404(Post, slug=post, status='published')
+
+class PostListView(generic.ListView):
+    model = Post
+    template_name = 'post_list.html'
+    context_object_name = 'post_list'
+
+class PostDetailView(generic.DetailView):
+    model = Post
+    template_name = 'post_detail.html'
+    context_object_name = 'post'
