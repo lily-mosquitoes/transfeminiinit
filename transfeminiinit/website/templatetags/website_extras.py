@@ -20,5 +20,27 @@ def contact():
     return _('contact')
 
 @register.simple_tag
+def read_more_cta():
+    return _('read_more_cta')
+
+@register.simple_tag
+def get_language_list():
+    language_list = [
+        {
+            'code': 'fi',
+            'name': 'suomi',
+        },
+        {
+            'code': 'sv',
+            'name': 'svenska',
+        },
+        {
+            'code': 'en',
+            'name': 'english',
+        },
+    ]
+    return language_list
+
+@register.simple_tag
 def get_verbose_field_name(instance, field_name):
     return instance._meta.get_field(field_name).verbose_name.title()

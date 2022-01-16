@@ -57,21 +57,14 @@
     </main>
     <footer class="bg-secondary-dark py-3 px-0 lg:px-4">
         <div class="flex">
+            {% get_language_list as language_list %}
+            {% for language in language_list %}
             <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
                 <input type="hidden" name="next" value="{{ redirect_to }}">
-                <input type="hidden" name="language" value="fi">
-                <input type="submit" value="suomi" class="block px-5 text-secondary-light hover:text-primary-dark">
+                <input type="hidden" name="language" value="{{ language.code }}">
+                <input type="submit" value="{{ language.name }}" class="block px-5 text-secondary-light hover:text-primary-dark">
             </form>
-            <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
-                <input type="hidden" name="next" value="{{ redirect_to }}">
-                <input type="hidden" name="language" value="sv">
-                <input type="submit" value="svenska" class="block px-5 text-secondary-light hover:text-primary-dark">
-            </form>
-            <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
-                <input type="hidden" name="next" value="{{ redirect_to }}">
-                <input type="hidden" name="language" value="en">
-                <input type="submit" value="english" class="block px-5 text-secondary-light hover:text-primary-dark">
-            </form>
+            {% endfor %}
         </div>
     </footer>
 </body>

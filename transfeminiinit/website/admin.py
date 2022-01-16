@@ -1,6 +1,10 @@
 from django.contrib import admin
-from .models import Post
+from .models import Post, Tag
 from parler.admin import TranslatableAdmin
+
+@admin.register(Tag)
+class TagAdmin(TranslatableAdmin):
+    list_display = ('name',)
 
 @admin.register(Post)
 class PostAdmin(TranslatableAdmin):

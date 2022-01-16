@@ -6,8 +6,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('website/', include('website.urls')),
     path('i18n/', include('django.conf.urls.i18n')),
+    path('website/', include('website.urls')),
     path('', RedirectView.as_view(url='website/', permanent=True)),
     path('ckeditor/',include('ckeditor_uploader.urls')),
     *static(settings.STATIC_URL, document_root=settings.STATIC_ROOT),

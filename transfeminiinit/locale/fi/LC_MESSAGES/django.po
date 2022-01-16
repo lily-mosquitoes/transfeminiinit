@@ -2,80 +2,103 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-16 02:59+0200\n"
-"PO-Revision-Date: 2022-01-16 00:21:02\n"
+"Report-Msgid-Bugs-To: webmaster@localhost\n"
+"POT-Creation-Date: 2022-01-16 15:34:03\n"
+"PO-Revision-Date: 2022-01-16 15:34:03\n"
 "Last-Translator: Server <root@localhost>\n"
 "Language-Team: English <webmaster@localhost>\n"
-"Language: en\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: website/models.py:11
-msgid "post_status_draft"
-msgstr "Luonnos"
-
-#: website/models.py:12
-msgid "post_status_published"
-msgstr "Julkaistu"
-
-#: website/models.py:16
-msgid "post_title"
-msgstr "Otsikko"
-
-#: website/models.py:17
-msgid "post_description"
-msgstr ""
-
-#: website/models.py:18
-msgid "post_body"
-msgstr "Sisältö"
-
-#: website/models.py:20
-msgid "post_author"
-msgstr "Kirjoittaja"
-
-#: website/models.py:21
-msgid "post_slug"
-msgstr "URL tunniste"
-
-#: website/models.py:23
-msgid "post_publish"
-msgstr "Julkaistu"
-
-#: website/models.py:24
-msgid "post_created"
-msgstr "Luotu"
-
-#: website/models.py:25
-msgid "post_updated"
-msgstr "Päivitetty"
-
-#: website/models.py:27
-msgid "post_status"
-msgstr "Tila"
-
-#: website/templatetags/website_extras.py:8
-msgid "title"
-msgstr "Transfeminiinit"
-
-#: website/templatetags/website_extras.py:12
-msgid "info"
-msgstr "tietoja"
-
-#: website/templatetags/website_extras.py:16
-msgid "membership"
-msgstr "jäsenuus"
-
-#: website/templatetags/website_extras.py:20
+#: website/templatetags/nav_strings.py:20
 msgid "contact"
 msgstr "yhteystiedot"
 
-#: website/views.py:10
+#: transfeminiinit/settings.py:107
+msgid "English"
+msgstr "englanti"
+
+#: website/views.py:9
+msgid "home_message"
+msgstr "testi"
+
+#: website/views.py:8
 msgid "home_title"
 msgstr "Tervetuloa!"
 
-#: website/views.py:11
-msgid "home_message"
-msgstr "testi"
+#: website/templatetags/nav_strings.py:12
+msgid "info"
+msgstr "tietoja"
+
+#: website/templatetags/nav_strings.py:16
+msgid "membership"
+msgstr "jäsenuus"
+
+#: website/models.py:18
+msgid "post_author"
+msgstr "Kirjoittaja"
+
+#: website/models.py:16
+msgid "post_body"
+msgstr "Sisältö"
+
+#: website/models.py:22
+msgid "post_created"
+msgstr "Luotu"
+
+#: website/models.py:17
+msgid "post_description"
+msgstr "Lyhyt kuvaus"
+
+#: website/models.py:21
+msgid "post_publish"
+msgstr "Julkaistu"
+
+#: website/models.py:19
+msgid "post_slug"
+msgstr "URL tunniste"
+
+#: website/models.py:25
+msgid "post_status"
+msgstr "Tila"
+
+#: website/models.py:10
+msgid "post_status_draft"
+msgstr "Luonnos"
+
+#: website/models.py:11
+msgid "post_status_published"
+msgstr "Julkaistu"
+
+#: website/models.py:28
+msgid "post_tags"
+msgstr "Tila"
+
+#: website/models.py:15
+msgid "post_title"
+msgstr "Otsikko"
+
+#: website/models.py:23
+msgid "post_updated"
+msgstr "Päivitetty"
+
+#: website/templatetags/website_extras.py:24
+msgid "read_more_cta"
+msgstr "lue lisää"
+
+#: transfeminiinit/settings.py:105
+msgid "Suomi"
+msgstr "suomi"
+
+#: transfeminiinit/settings.py:106
+msgid "Svenska"
+msgstr "ruotsi"
+
+#: website/models.py:12
+msgid "tag_name"
+msgstr "Tagi"
+
+#: website/templatetags/nav_strings.py:8
+msgid "title"
+msgstr "Transfeminiinit"

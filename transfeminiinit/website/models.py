@@ -5,6 +5,15 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.conf import settings
 from django.utils.translation import gettext_lazy as _
+from django.urls import reverse
+
+class Tag(TranslatableModel):
+    translations = TranslatedFields(
+        name = models.CharField(max_length=10, verbose_name=_('tag_name')),
+    )
+
+    def __str__(self):
+        return self.name
 
 class Post(TranslatableModel):
     STATUS_CHOICES = (
@@ -16,6 +25,7 @@ class Post(TranslatableModel):
         title = models.CharField(max_length=120, verbose_name=_('post_title')),
         description = models.CharField(max_length=180, blank=True, verbose_name=_('post_description')),
         body = RichTextUploadingField(verbose_name=_('post_body')),
+        tags = models.ManyToManyField('Tag', verbose_name=_('post_tags')),
 
         author = models.ForeignKey(User, on_delete=models.PROTECT, related_name='blog_posts', verbose_name=_('post_author')),
         slug = models.SlugField(max_length=250, unique_for_date='publish', verbose_name=_('post_slug')),
@@ -27,11 +37,11 @@ class Post(TranslatableModel):
         status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft', verbose_name=_('post_status')),
     )
 
-    # class Meta:
-    #     ordering = ('-publish',)
-
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('post_detail', args=[str(self.id)])
 
     def published_string(self):
         return dict(self.STATUS_CHOICES)['published']
