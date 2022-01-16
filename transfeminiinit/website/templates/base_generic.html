@@ -22,7 +22,7 @@
         <div class="flex justify-between">
             <div>
                 <img src="{% static 'media/transfeminiinit-logo.png' %}" class="float-left object-contain h-11 md:h-16">
-                <div class="flex"><h1 class="text-secondary-dark hover:text-primary-dark transition duration-300 text-4xl md:text-6xl font-roboto-condensed font-semibold mt-1"><a href="{% url 'home' %}">{% title %}</a></h1></div>
+                <div class="flex"><h1 class="text-secondary-dark hover:text-primary-dark transition duration-300 text-4xl md:text-6xl font-roboto-condensed font-semibold mt-1"><a href="{% url 'website:home' %}">{% title %}</a></h1></div>
             </div>
             <div class="hidden lg:flex items-center space-x-1">
                 <a class="px-4 text-secondary-dark hover:text-primary-dark transition duration-300 text-4xl" href="">{% info %}</a>
@@ -49,13 +49,13 @@
     </nav>
     {% endblock %}
     <main class="flex-grow">
-        <div class="px-4">
+        <div class="px-4 mb-6">
             <div class="bg-primary-light rounded">
             {% block content %}{% endblock %}
             </div>
         </div>
     </main>
-    <footer class="bg-secondary-dark py-3 px-0 lg:px-4">
+    <footer class="fixed bottom-0 w-full bg-secondary-dark py-3 px-0 lg:px-4">
         <div class="flex">
             {% get_language_list as language_list %}
             {% for language in language_list %}
