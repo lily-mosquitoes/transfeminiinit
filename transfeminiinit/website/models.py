@@ -13,7 +13,8 @@ class Post(TranslatableModel):
     )
 
     translations = TranslatedFields(
-        title = models.CharField(max_length=250, verbose_name=_('post_title')),
+        title = models.CharField(max_length=120, verbose_name=_('post_title')),
+        description = models.CharField(max_length=180, blank=True, verbose_name=_('post_description')),
         body = RichTextUploadingField(verbose_name=_('post_body')),
 
         author = models.ForeignKey(User, on_delete=models.PROTECT, related_name='blog_posts', verbose_name=_('post_author')),
