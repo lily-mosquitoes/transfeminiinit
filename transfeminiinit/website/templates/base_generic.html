@@ -24,13 +24,13 @@
                 <img src="{% static 'media/transfeminiinit-logo.png' %}" class="float-left object-contain h-11 md:h-16">
                 <div class="flex"><h1 class="text-secondary-dark hover:text-primary-dark transition duration-300 text-4xl md:text-6xl font-roboto-condensed font-semibold mt-1"><a href="{% url 'website:home' %}">{% title %}</a></h1></div>
             </div>
-            <div class="hidden lg:flex items-center space-x-1">
+            <div class="hidden xl:flex items-center space-x-1">
                 <a class="px-4 text-secondary-dark hover:text-primary-dark transition duration-300 text-4xl" href="">{% info %}</a>
                 <a class="px-4 text-secondary-dark hover:text-primary-dark transition duration-300 text-4xl" href="">{% membership %}</a>
                 <a class="px-4 text-secondary-dark hover:text-primary-dark transition duration-300 text-4xl" href="">{% contact %}</a>
             </div>
             <!-- Mobile menu button -->
-            <div class="lg:hidden pt-2 pr-2">
+            <div class="xl:hidden pt-2 pr-2">
                 <button class="outline-none mobile-menu-button text-secondary-dark">
                     <svg class="w-8 h-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none" viewBox="0 0 24 24">
                         <path d="M4 6h16M4 12h16M4 18h16"></path>
@@ -40,7 +40,7 @@
         </div>
         <!-- Mobile menu -->
         <noscript>
-            <div class="mt-4 mx-4 mb-0 lg:hidden">
+            <div class="mt-4 mx-4 mb-0 xl:hidden">
                 <ul class="space-y-1">
                     <li><a class="block px-8 py-4 text-2xl bg-primary-light rounded text-secondary-dark hover:text-primary-dark transition duration-300" href="">{% info %}</a></li>
                     <li><a class="block px-8 py-4 text-2xl bg-primary-light rounded text-secondary-dark hover:text-primary-dark transition duration-300" href="">{% membership %}</a></li>
@@ -48,7 +48,7 @@
                 </ul>
             </div>
         </noscript>
-        <div class="mobile-menu mx-4 mb-0 lg:hidden">
+        <div class="mobile-menu mx-4 mb-0 xl:hidden">
             <ul class="space-y-1">
                 <li><a class="block px-8 py-4 text-2xl bg-primary-light rounded text-secondary-dark hover:text-primary-dark transition duration-300" href="">{% info %}</a></li>
                 <li><a class="block px-8 py-4 text-2xl bg-primary-light rounded text-secondary-dark hover:text-primary-dark transition duration-300" href="">{% membership %}</a></li>
@@ -64,7 +64,7 @@
             </div>
         </div>
     </main>
-    <footer class="fixed bottom-0 w-full bg-secondary-dark py-3 px-0 lg:px-4">
+    <footer class="fixed bottom-0 w-full bg-secondary-dark py-3 px-0 xl:px-4">
         <div class="flex">
             {% get_language_list as language_list %}
             {% for language in language_list %}
