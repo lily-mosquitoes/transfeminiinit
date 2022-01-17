@@ -4,9 +4,45 @@
 
 {% block content %}
 <div class="p-10 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
+    <!-- mobile filters menu -->
+    <div class="visible md:hidden col-span-full flex flex-row-reverse justify-between space-y-4 lg:space-y-0 space-x-4">
+        <button class="filters-mobile-button px-7 py-1 bg-primary-dark text-secondary-light text-sm font-semibold rounded-full" type="button">show filters ▼</button>
+    </div>
+    <!-- filters -->
+    <div class="col-span-full hidden md:flex flex-col lg:flex-row justify-between space-y-4 lg:space-y-0 space-x-0 lg:space-x-4">
+        <div class="w-full md:w-fit grid grid-cols-3 bg-secondary-light rounded-full">
+            <button class="px-0 md:px-8 py-1 bg-secondary-gray rounded-full" type="button" name="button">{% time_filter_all %}</button>
+            {% get_time_filters as time_filters %}
+            {% for filter in time_filters %}
+            <button class="px-0 md:px-8 py-1 rounded-full" type="button" name="button">{{ filter }}</button>
+            {% endfor %}
+        </div>
+        <div class="w-full md:w-fit grid grid-cols-3 md:grid-cols-5 bg-secondary-light rounded-2xl md:rounded-full">
+            <button class="px-0 md:px-4 py-1 bg-secondary-gray rounded-full" type="button" name="button">{% all_tags_filter %}</button>
+            {% for tag in tag_list %}
+            <button class="px-0 md:px-4 py-1 rounded-full" type="button" name="button">#{{ tag }}</button>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- filters mobile -->
+    <div class="filters-mobile col-span-full flex md:hidden flex-col lg:flex-row justify-between space-y-4 lg:space-y-0 space-x-0 lg:space-x-4">
+        <div class="w-full md:w-fit grid grid-cols-3 bg-secondary-light rounded-full">
+            <button class="px-0 md:px-8 py-1 bg-secondary-gray rounded-full" type="button" name="button">{% time_filter_all %}</button>
+            {% get_time_filters as time_filters %}
+            {% for filter in time_filters %}
+            <button class="px-0 md:px-8 py-1 rounded-full" type="button" name="button">{{ filter }}</button>
+            {% endfor %}
+        </div>
+        <div class="w-full md:w-fit grid grid-cols-3 md:grid-cols-5 bg-secondary-light rounded-2xl md:rounded-full">
+            <button class="px-0 md:px-4 py-1 bg-secondary-gray rounded-full" type="button" name="button">{% all_tags_filter %}</button>
+            {% for tag in tag_list %}
+            <button class="px-0 md:px-4 py-1 rounded-full" type="button" name="button">#{{ tag }}</button>
+            {% endfor %}
+        </div>
+    </div>
     {% for post in post_list %}
     {% if post.status == 'published' %}
-    <div class="flex flex-col group rounded overflow-hidden shadow-lg bg-secondary-light">
+    <div class="flex flex-col group rounded overflow-hidden shadow-lg bg-secondary-light" id="{{ post.publish }}">
         <img src="{% static 'media/placeholder.webp' %}" alt="placeholder">
         <div class="px-6 py-4 h-48">
             <div class="truncate text-secondary-dark group-hover:text-primary-dark font-bold text-xl mb-1">
@@ -21,7 +57,7 @@
         </div>
         <div class="flex-grow px-6 pt-1 pb-2">
             {% for tag in post.tags.all %}
-                <span class="inline-block bg-gray-700 px-3 py-1 text-sm font-semibold text-secondary-gray mb-2">#{{ tag }}</span>
+                <span class="inline-block px-3 py-1 text-sm font-semibold text-secondary-gray mb-2">#{{ tag }}</span>
             {% endfor %}
         </div>
         <div class="px-4 py-0.5 bg-primary-dark font-semibold text-secondary-light text-sm">
@@ -31,4 +67,16 @@
     {% endif %}
     {% endfor %}
 </div>
+<script type="text/javascript">
+    const btn_filters = document.querySelector("button.filters-mobile-button");
+    const filters_mobile = document.querySelector(".filters-mobile")
+
+    btn_filters.addEventListener("click", () => {
+        if (filters_mobile.style.maxHeight > "0px") {
+            filters_mobile.style.maxHeight = "0px";
+        } else {
+            filters_mobile.style.maxHeight = "500px";
+        }
+    });
+</script>
 {% endblock %}
