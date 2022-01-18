@@ -41,7 +41,9 @@ class Post(TranslatableModel):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('post_detail', args=[str(self.id)])
+        return reverse('website:post_detail', kwargs={'slug': self.slug})
+        # return reverse('website:post_detail', args=[str(self.id)])
+        # return reverse('website:post_detail', args=[self.slug])
 
     def published_string(self):
         return dict(self.STATUS_CHOICES)['published']

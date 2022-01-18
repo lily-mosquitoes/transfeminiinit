@@ -38,7 +38,7 @@
     </div>
     {% for post in post_list %}
     {% if post.status == 'published' %}
-    <div class="post flex flex-col group rounded overflow-hidden shadow-lg bg-secondary-light" id="{{ post.publish|date_iso }}">
+    <a class="post flex flex-col group rounded overflow-hidden shadow-lg bg-secondary-light" id="{{ post.publish|date_iso }}" href="{{ post.get_absolute_url }}">
         <img src="{% static 'media/placeholder.webp' %}" alt="placeholder">
         <div class="px-6 py-4 h-48">
             <div class="truncate text-secondary-dark group-hover:text-primary-dark font-bold text-xl mb-1">
@@ -59,7 +59,7 @@
         <div class="px-4 py-0.5 bg-primary-dark font-semibold text-secondary-light text-sm">
             {% read_more_cta %}
         </div>
-    </div>
+    </a>
     {% endif %}
     {% endfor %}
 </div>

@@ -4,6 +4,7 @@ from django.utils import translation
 from django.utils.translation import gettext_lazy as _
 from .models import Post, Tag
 from django.views import generic
+from parler.views import TranslatableSlugMixin
 
 def home(request):
     context = {
@@ -13,17 +14,9 @@ def home(request):
 
     return render(request, 'home.html', context=context)
 
-# def post_list(request):
-#     posts = Post.objects.filter(translations__status='published').order_by('translations__publish')
-#
-#     return render(request, 'post_list.html', { 'posts': posts })
-#
-# def post_detail(request):
-#     post = get_object_or_404(Post, slug=post, status='published')
-
 class PostListView(generic.ListView):
     model = Post
-    template_name = 'post_list.html'
+    template_name = 'website/post_list.html'
 
     def get_context_data(self, **kwargs):
         context = super(PostListView, self).get_context_data(**kwargs)
@@ -32,10 +25,10 @@ class PostListView(generic.ListView):
         for p in context['object_list'].filter(translations__status='published').order_by('-translations__publish'):
             if p not in context['post_list']:
                 context['post_list'].append(p)
-        
+
         return context
 
-class PostDetailView(generic.DetailView):
+class PostDetailView(TranslatableSlugMixin, generic.DetailView):
     model = Post
-    template_name = 'post_detail.html'
+    template_name = 'website/post_detail.html'
     context_object_name = 'post'
