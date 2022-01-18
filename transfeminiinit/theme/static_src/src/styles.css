@@ -9,6 +9,7 @@
     .filter-none {
         filter: none;
     }
+@layer components {
     .mobile-menu {
         height: 0px;
         overflow: hidden;
@@ -20,6 +21,6 @@
         transition: max-height 0.2s ease-in-out;
     }
     .filter-btn {
-        transition: background-color 0.2s linear;
+        transition: all 0.2s linear;
     }
 }
