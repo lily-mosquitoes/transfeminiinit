@@ -11,38 +11,34 @@
     <!-- filters -->
     <div class="col-span-full hidden md:flex flex-col lg:flex-row justify-between space-y-4 lg:space-y-0 space-x-0 lg:space-x-4">
         <div class="w-full md:w-fit grid grid-cols-3 bg-secondary-light rounded-full">
-            <button class="px-0 md:px-8 py-1 bg-secondary-gray rounded-full" type="button" name="button">{% time_filter_all %}</button>
-            {% get_time_filters as time_filters %}
-            {% for filter in time_filters %}
-            <button class="px-0 md:px-8 py-1 rounded-full" type="button" name="button">{{ filter }}</button>
-            {% endfor %}
+            <button class="filter-btn time-filter-btn px-0 md:px-8 py-1 bg-secondary-gray rounded-full" type="button" name="time_filter_all">{% time_filter_all %}</button>
+            <button class="filter-btn time-filter-btn px-0 md:px-8 py-1 rounded-full" type="button" name="time_filter_past_year">{% time_filter_past_year %}</button>
+            <button class="filter-btn time-filter-btn px-0 md:px-8 py-1 rounded-full" type="button" name="time_filter_recent">{% time_filter_recent %}</button>
         </div>
         <div class="w-full md:w-fit grid grid-cols-3 md:grid-cols-5 bg-secondary-light rounded-2xl md:rounded-full">
-            <button class="px-0 md:px-4 py-1 bg-secondary-gray rounded-full" type="button" name="button">{% all_tags_filter %}</button>
+            <button class="filter-btn tag-filter-btn all-tags px-0 md:px-4 py-1 bg-secondary-gray rounded-full" type="button" name="{% all_tags_filter %}">{% all_tags_filter %}</button>
             {% for tag in tag_list %}
-            <button class="px-0 md:px-4 py-1 rounded-full" type="button" name="button">#{{ tag }}</button>
+            <button class="filter-btn tag-filter-btn px-0 md:px-4 py-1 rounded-full" type="button" name="{{ tag }}">#{{ tag }}</button>
             {% endfor %}
         </div>
     </div>
     <!-- filters mobile -->
     <div class="filters-mobile col-span-full flex md:hidden flex-col lg:flex-row justify-between space-y-4 lg:space-y-0 space-x-0 lg:space-x-4">
         <div class="w-full md:w-fit grid grid-cols-3 bg-secondary-light rounded-full">
-            <button class="px-0 md:px-8 py-1 bg-secondary-gray rounded-full" type="button" name="button">{% time_filter_all %}</button>
-            {% get_time_filters as time_filters %}
-            {% for filter in time_filters %}
-            <button class="px-0 md:px-8 py-1 rounded-full" type="button" name="button">{{ filter }}</button>
-            {% endfor %}
+            <button class="filter-btn time-filter-btn px-0 md:px-8 py-1 bg-secondary-gray rounded-full" type="button" name="time_filter_all">{% time_filter_all %}</button>
+            <button class="filter-btn time-filter-btn px-0 md:px-8 py-1 rounded-full" type="button" name="time_filter_past_year">{% time_filter_past_year %}</button>
+            <button class="filter-btn time-filter-btn px-0 md:px-8 py-1 rounded-full" type="button" name="time_filter_recent">{% time_filter_recent %}</button>
         </div>
         <div class="w-full md:w-fit grid grid-cols-3 md:grid-cols-5 bg-secondary-light rounded-2xl md:rounded-full">
-            <button class="px-0 md:px-4 py-1 bg-secondary-gray rounded-full" type="button" name="button">{% all_tags_filter %}</button>
+            <button class="filter-btn tag-filter-btn all-tags px-0 md:px-4 py-1 bg-secondary-gray rounded-full" type="button" name="{% all_tags_filter %}">{% all_tags_filter %}</button>
             {% for tag in tag_list %}
-            <button class="px-0 md:px-4 py-1 rounded-full" type="button" name="button">#{{ tag }}</button>
+            <button class="filter-btn tag-filter-btn px-0 md:px-4 py-1 rounded-full" type="button" name="{{ tag }}">#{{ tag }}</button>
             {% endfor %}
         </div>
     </div>
     {% for post in post_list %}
     {% if post.status == 'published' %}
-    <div class="flex flex-col group rounded overflow-hidden shadow-lg bg-secondary-light" id="{{ post.publish }}">
+    <div class="post flex flex-col group rounded overflow-hidden shadow-lg bg-secondary-light" id="{{ post.publish|date_iso }}">
         <img src="{% static 'media/placeholder.webp' %}" alt="placeholder">
         <div class="px-6 py-4 h-48">
             <div class="truncate text-secondary-dark group-hover:text-primary-dark font-bold text-xl mb-1">
@@ -61,16 +57,96 @@
             {% endfor %}
         </div>
         <div class="px-4 py-0.5 bg-primary-dark font-semibold text-secondary-light text-sm">
-            {% read_more_cta %}
+            {% read_more_cta %}year_ago
         </div>
     </div>
     {% endif %}
     {% endfor %}
 </div>
 <script type="text/javascript">
+    // declarations
+    // mobile show filters button
     const btn_filters = document.querySelector("button.filters-mobile-button");
+    // mobile filters menu
     const filters_mobile = document.querySelector(".filters-mobile")
+    // posts
+    const posts = document.querySelectorAll(".post");
+    // filter buttons for time
+    // all
+    const btn_time_filter_all = document.querySelectorAll("button[name='time_filter_all']");
+    // past year
+    const btn_time_filter_past_year = document.querySelectorAll("button[name='time_filter_past_year']");
+    const year_ago = 1000 * 60 * 60 * 24 * 365
+    //               msecs secs mins hours days
+    // recent
+    const btn_time_filter_recent = document.querySelectorAll("button[name='time_filter_recent']");
+    const two_weeks_ago = 1000 * 60 * 60 * 24 * 14
+    //                    msecs secs mins hours days
+    // filter buttons for tags
+    const tag_filter_buttons = document.querySelectorAll("button.tag-filter-btn");
 
+    // functions
+    // toggle time filter buttons background
+    function toggleTimeFilterBg(type) {
+        const dict = {
+            "all": btn_time_filter_all,
+            "past_year": btn_time_filter_past_year,
+            "recent": btn_time_filter_recent,
+        };
+        for (var key in dict) {
+            if (key === type) {
+                for (var i = 0; i < dict[key].length; i++) {
+                    dict[key][i].classList.add("bg-secondary-gray");
+                }
+            } else {
+                for (var i = 0; i < dict[key].length; i++) {
+                    dict[key][i].classList.remove("bg-secondary-gray");
+                }
+            }
+        }
+    }
+    // toggle tag filter buttons background
+    function toggleTagFilterBg(name) {
+        for (var i = 0; i < tag_filter_buttons.length; i++) {
+            if (tag_filter_buttons[i].name === name) {
+                tag_filter_buttons[i].classList.add("bg-secondary-gray")
+            } else {
+                tag_filter_buttons[i].classList.remove("bg-secondary-gray")
+            }
+        }
+    }
+    // get post tags
+    function getPostTags(nodes) {
+        result = [];
+        for (var i = 0; i < nodes.length; i++) {
+            result.push(nodes[i].textContent.slice(1));
+        }
+        return result
+    }
+    // post contains
+    function postContains(post, time, tag) {
+        const post_date = new Date(post.id);
+        const is_newer = post_date >= Date.now() - time;
+        const post_tags = getPostTags(post.children[2].children);
+        if (is_newer && (post_tags.includes(tag) || tag == "all")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    // filter posts
+    function filterPosts(time, tag) {
+        for (var i = 0; i < posts.length; i++) {
+            if (postContains(posts[i], time, tag)) {
+                posts[i].classList.remove("hidden");
+            } else {
+                posts[i].classList.add("hidden");
+            }
+        }
+    }
+
+    // events
+    // mobile show filters button
     btn_filters.addEventListener("click", () => {
         if (filters_mobile.style.maxHeight > "0px") {
             filters_mobile.style.maxHeight = "0px";
@@ -78,5 +154,58 @@
             filters_mobile.style.maxHeight = "500px";
         }
     });
+    // filter buttons for time
+    // all
+    for (var i = 0; i < btn_time_filter_all.length; i++) {
+        btn_time_filter_all[i].addEventListener("click", () => {
+            toggleTimeFilterBg('all');
+            const current_tag_filter = document.querySelector("button.tag-filter-btn.bg-secondary-gray");
+            if (current_tag_filter.classList.contains("all-tags")) {
+                filterPosts(Infinity, "all")
+            } else {
+                filterPosts(Infinity, current_tag_filter.name)
+            }
+        });
+    }
+    // past year
+    for (var i = 0; i < btn_time_filter_past_year.length; i++) {
+        btn_time_filter_past_year[i].addEventListener("click", () => {
+            toggleTimeFilterBg('past_year');
+            const current_tag_filter = document.querySelector("button.tag-filter-btn.bg-secondary-gray");
+            if (current_tag_filter.classList.contains("all-tags")) {
+                filterPosts(year_ago, "all")
+            } else {
+                filterPosts(year_ago, current_tag_filter.name)
+            }
+        });
+    }
+    // recent
+    for (var i = 0; i < btn_time_filter_recent.length; i++) {
+        btn_time_filter_recent[i].addEventListener("click", () => {
+            toggleTimeFilterBg('recent');
+            const current_tag_filter = document.querySelector("button.tag-filter-btn.bg-secondary-gray");
+            if (current_tag_filter.classList.contains("all-tags")) {
+                filterPosts(two_weeks_ago, "all")
+            } else {
+                filterPosts(two_weeks_ago, current_tag_filter.name)
+            }
+        });
+    }
+    // filter buttons for tags
+    for (var i = 0; i < tag_filter_buttons.length; i++) {
+        tag_filter_buttons[i].addEventListener("click", function(e) {
+            toggleTagFilterBg(e.target.name);
+            const current_time_filter = document.querySelector("button.time-filter-btn.bg-secondary-gray")
+            const tag = e.target.classList.contains("all-tags") ? "all" : e.target.name;
+            if (current_time_filter.name == 'time_filter_all') {
+                filterPosts(Infinity, tag);
+            } else if (current_time_filter.name == 'time_filter_past_year') {
+                filterPosts(year_ago, tag);
+            } else if (current_time_filter.name == 'time_filter_recent') {
+                filterPosts(two_weeks_ago, tag);
+            }
+        });
+    }
+
 </script>
 {% endblock %}

@@ -24,12 +24,15 @@ def home(request):
 class PostListView(generic.ListView):
     model = Post
     template_name = 'post_list.html'
-    context_object_name = 'post_list'
 
     def get_context_data(self, **kwargs):
         context = super(PostListView, self).get_context_data(**kwargs)
         context['tag_list'] = Tag.objects.all()
-        print(context)
+        context['post_list'] = list()
+        for p in context['object_list'].filter(translations__status='published').order_by('-translations__publish'):
+            if p not in context['post_list']:
+                context['post_list'].append(p)
+        
         return context
 
 class PostDetailView(generic.DetailView):

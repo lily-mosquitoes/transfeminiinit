@@ -13,7 +13,7 @@ class PostAdmin(TranslatableAdmin):
     list_filter = ('translations__status', 'translations__created', 'translations__publish', 'translations__author')
     #raw_id_fields = ('translations__author',)
     date_hierarchy = 'translations__publish'
-    ordering = ('translations__status', 'translations__publish')
+    ordering = ('translations__status', '-translations__publish')
 
     def get_prepopulated_fields(self, request, obj=None):
         return {'slug': ('title',)}
