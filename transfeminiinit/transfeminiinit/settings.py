@@ -110,7 +110,7 @@ LANGUAGES = (
 PARLER_LANGUAGES = {
     None: tuple({'code': lang[0],} for lang in LANGUAGES),
     'default': {
-        'fallback': 'fi',
+        'fallbacks': ['fi', 'en', 'sv'],
         'hide_untranslated': False,
     }
 }
