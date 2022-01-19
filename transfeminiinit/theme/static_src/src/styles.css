@@ -9,6 +9,8 @@
     .filter-none {
         filter: none;
     }
+}
+
 @layer components {
     .mobile-menu {
         height: 0px;

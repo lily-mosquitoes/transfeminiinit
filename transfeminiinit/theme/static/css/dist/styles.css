@@ -668,6 +668,22 @@ select {
   }
 }
 
+.mobile-menu {
+  height: 0px;
+  overflow: hidden;
+  transition: height 0.2s ease-in-out;
+}
+
+.filters-mobile {
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height 0.2s ease-in-out;
+}
+
+.filter-btn {
+  transition: all 0.2s linear;
+}
+
 .visible {
   visibility: visible;
 }
@@ -1088,22 +1104,6 @@ select {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
-}
-
-.mobile-menu {
-  height: 0px;
-  overflow: hidden;
-  transition: height 0.2s ease-in-out;
-}
-
-.filters-mobile {
-  max-height: 0px;
-  overflow: hidden;
-  transition: max-height 0.2s ease-in-out;
-}
-
-.filter-btn {
-  transition: background-color 0.2s linear;
 }
 
 .hover\:text-primary-dark:hover {
