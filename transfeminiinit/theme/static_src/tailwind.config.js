@@ -44,7 +44,8 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                'roboto-condensed': ['"Roboto Condensed"', 'sans-serif']
+                'roboto-condensed': ['"Roboto Condensed"', 'sans-serif'],
+                'ubuntu': ['Ubuntu', 'sans-serif'],
             },
         },
         colors: {
