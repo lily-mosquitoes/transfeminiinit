@@ -46,8 +46,13 @@
                     <div class="truncate text-secondary-dark group-hover:text-primary-dark font-bold text-xl mb-1">
                         {{ post.title }}
                     </div>
-                    <div class="text-secondary-gray text-sm mb-2">
-                        {{ post.published_string }} {{ post.publish|date }}
+                    <div class="grid md:flex grid-cols-12 mb-2">
+                        <div class="col-span-8 text-secondary-gray text-sm">
+                            {{ post.published_string }} {{ post.publish|date }}
+                        </div>
+                        <div class="text-xs col-span-4 text-secondary-error pl-0 md:pl-4 py-0 md:py-0.5">
+                            {% trans_available post.has_translation %}
+                        </div>
                     </div>
                     <p class="line-clamp-4 text-secondary-dark text-base">
                         {{ post.body|safe|striptags }}

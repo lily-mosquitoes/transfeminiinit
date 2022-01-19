@@ -55,7 +55,8 @@ module.exports = {
             secondary: {
                 light: '#f0ebec',
                 dark: '#262324',
-                gray: '#828282'
+                gray: '#828282',
+                error: '#eb0000'
             },
         },
     },
