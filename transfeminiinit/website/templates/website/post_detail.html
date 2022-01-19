@@ -3,7 +3,24 @@
 {% load website_extras %}
 
 {% block content %}
-<div class="">
-    <p>{{ post }}</p>
+<div class="px-0 md:px-4 mb-20">
+    <div class="bg-primary-light rounded">
+        <div class="p-5 md:p-10 mx-0 lg:mx-32 xl:mx-60 2xl:mx-96 grid grid-cols-1 gap-5">
+            <div class="flex flex-col rounded overflow-hidden shadow-lg bg-secondary-light">
+                <img src="{% static 'media/placeholder.webp' %}" alt="placeholder">
+                <div class="px-6 xl:px-12 2xl:px-16 py-4 xl:py-8 2xl:py-11">
+                    <div class="text-secondary-dark font-bold text-3xl mb-1">
+                        {{ post.title }}
+                    </div>
+                    <div class="text-secondary-gray text-base mb-2">
+                        {{ post.author }}, {{ post.publish|date }}
+                    </div>
+                    <div class="text-secondary-dark text-lg">
+                        {{ post.body|safe }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

@@ -1,10 +1,14 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-<div class="container">
-    <div class="bg-primary-light border-primary-dark border-b p-4 mx-4 rounded">
-        <h1 class="text-secondary-dark text-2xl">{{ home_title }}</h1>
-        <p class="text-secondary-dark text-1xl">{{ home_message }}</p>
+<div class="px-4 mb-20">
+    <div class="bg-primary-light rounded">
+        <div class="container">
+            <div class="bg-primary-light border-primary-dark border-b p-4 mx-4 rounded">
+                <h1 class="text-secondary-dark text-2xl">{{ home_title }}</h1>
+                <p class="text-secondary-dark text-1xl">{{ home_message }}</p>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

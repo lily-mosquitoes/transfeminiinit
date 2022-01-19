@@ -58,11 +58,7 @@
     </nav>
     {% endblock %}
     <main class="flex-grow">
-        <div class="px-4 mb-20">
-            <div class="bg-primary-light rounded">
-            {% block content %}{% endblock %}
-            </div>
-        </div>
+        {% block content %}{% endblock %}
     </main>
     <footer class="fixed bottom-0 w-full bg-secondary-dark py-3 px-0 xl:px-4">
         <div class="flex">
