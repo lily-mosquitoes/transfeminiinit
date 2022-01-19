@@ -14,7 +14,7 @@
     <!-- Goggle Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;500&family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body class="flex flex-col min-h-screen bg-secondary-light">
     {% block sidebar %}
@@ -25,9 +25,9 @@
                 <div class="flex"><h1 class="text-secondary-dark hover:text-primary-dark transition duration-300 text-4xl md:text-6xl font-roboto-condensed font-semibold mt-1"><a href="{% url 'website:home' %}">{% title %}</a></h1></div>
             </div>
             <div class="hidden xl:flex items-center space-x-1">
-                <a class="px-4 text-secondary-dark hover:text-primary-dark transition duration-300 text-4xl" href="">{% info %}</a>
-                <a class="px-4 text-secondary-dark hover:text-primary-dark transition duration-300 text-4xl" href="">{% membership %}</a>
-                <a class="px-4 text-secondary-dark hover:text-primary-dark transition duration-300 text-4xl" href="">{% contact %}</a>
+                <a class="px-4 text-secondary-dark hover:text-primary-dark transition duration-300 text-4xl font-ubuntu" href="">{% info %}</a>
+                <a class="px-4 text-secondary-dark hover:text-primary-dark transition duration-300 text-4xl font-ubuntu" href="">{% membership %}</a>
+                <a class="px-4 text-secondary-dark hover:text-primary-dark transition duration-300 text-4xl font-ubuntu" href="">{% contact %}</a>
             </div>
             <!-- Mobile menu button -->
             <div class="xl:hidden pt-2 pr-2">
@@ -42,22 +42,22 @@
         <noscript>
             <div class="mt-4 mx-4 mb-0 xl:hidden">
                 <ul class="space-y-1">
-                    <li><a class="block px-8 py-4 text-2xl bg-primary-light rounded text-secondary-dark hover:text-primary-dark transition duration-300" href="">{% info %}</a></li>
-                    <li><a class="block px-8 py-4 text-2xl bg-primary-light rounded text-secondary-dark hover:text-primary-dark transition duration-300" href="">{% membership %}</a></li>
-                    <li><a class="block px-8 py-4 text-2xl bg-primary-light rounded text-secondary-dark hover:text-primary-dark transition duration-300" href="">{% contact %}</a></li>
+                    <li><a class="block px-8 py-4 text-2xl font-ubuntu bg-primary-light rounded text-secondary-dark hover:text-primary-dark transition duration-300" href="">{% info %}</a></li>
+                    <li><a class="block px-8 py-4 text-2xl font-ubuntu bg-primary-light rounded text-secondary-dark hover:text-primary-dark transition duration-300" href="">{% membership %}</a></li>
+                    <li><a class="block px-8 py-4 text-2xl font-ubuntu bg-primary-light rounded text-secondary-dark hover:text-primary-dark transition duration-300" href="">{% contact %}</a></li>
                 </ul>
             </div>
         </noscript>
         <div class="mobile-menu mx-4 mb-0 xl:hidden">
             <ul class="space-y-1">
-                <li><a class="block px-8 py-4 text-2xl bg-primary-light rounded text-secondary-dark hover:text-primary-dark transition duration-300" href="">{% info %}</a></li>
-                <li><a class="block px-8 py-4 text-2xl bg-primary-light rounded text-secondary-dark hover:text-primary-dark transition duration-300" href="">{% membership %}</a></li>
-                <li><a class="block px-8 py-4 text-2xl bg-primary-light rounded text-secondary-dark hover:text-primary-dark transition duration-300" href="">{% contact %}</a></li>
+                <li><a class="block px-8 py-4 text-2xl font-ubuntu bg-primary-light rounded text-secondary-dark hover:text-primary-dark transition duration-300" href="">{% info %}</a></li>
+                <li><a class="block px-8 py-4 text-2xl font-ubuntu bg-primary-light rounded text-secondary-dark hover:text-primary-dark transition duration-300" href="">{% membership %}</a></li>
+                <li><a class="block px-8 py-4 text-2xl font-ubuntu bg-primary-light rounded text-secondary-dark hover:text-primary-dark transition duration-300" href="">{% contact %}</a></li>
             </ul>
         </div>
     </nav>
     {% endblock %}
-    <main class="flex-grow">
+    <main class="flex-grow font-ubuntu">
         {% block content %}{% endblock %}
     </main>
     <footer class="fixed bottom-0 w-full bg-secondary-dark py-3 px-0 xl:px-4">
@@ -68,7 +68,7 @@
             <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
                 <input type="hidden" name="next" value="{{ tr_url }}">
                 <input type="hidden" name="language" value="{{ language.code }}">
-                <input type="submit" value="{{ language.name }}" class="block px-5 text-secondary-light hover:text-primary-dark">
+                <input type="submit" value="{{ language.name }}" class="block px-5 text-secondary-light hover:text-primary-dark font-ubuntu">
             </form>
             {% endfor %}
         </div>
