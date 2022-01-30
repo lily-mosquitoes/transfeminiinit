@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: webmaster@localhost\n"
-"POT-Creation-Date: 2022-01-19 11:01:51\n"
-"PO-Revision-Date: 2022-01-19 11:01:51\n"
+"POT-Creation-Date: 2022-01-30 14:38:28\n"
+"PO-Revision-Date: 2022-01-30 14:38:28\n"
 "Last-Translator: Server <root@localhost>\n"
 "Language-Team: English <webmaster@localhost>\n"
 "MIME-Version: 1.0\n"
@@ -37,7 +37,7 @@ msgstr "tietoja"
 
 #: website/templatetags/nav_strings.py:16
 msgid "membership"
-msgstr "jäsenuus"
+msgstr "jäsenyys"
 
 #: website/models.py:18
 msgid "post_author"
