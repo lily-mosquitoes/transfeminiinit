@@ -1,12 +1,58 @@
 {% extends "base_generic.html" %}
+{% load static %}
 
 {% block content %}
 <div class="px-4 mb-20">
     <div class="bg-primary-light rounded">
-        <div class="container">
-            <div class="bg-primary-light border-primary-dark border-b p-4 mx-4 rounded">
-                <h1 class="text-secondary-dark text-2xl">{{ home_title }}</h1>
-                <p class="text-secondary-dark text-1xl">{{ home_message }}</p>
+        <div class="p-5 md:p-10 flex flex-col">
+            <div class="p-4 mx-16 space-y-16">
+                <!-- <h1 class="text-secondary-dark text-4xl">{{ home_title }}</h1>
+                <p class="text-secondary-dark text-1xl">{{ home_message }}</p> -->
+                <div class="space-y-8">
+                    <h1 class="text-secondary-dark text-3xl">Peer support association for transgender women</h1>
+                    <div class="border-2 border-primary-dark rounded"></div>
+                </div>
+                <div class="mx-6 my-8 flex flex-row">
+                    <img src="{% static 'media/support.jpg' %}" alt="placeholder" class="h-52 w-full object-cover rounded-lg">
+                    <div class="px-8 flex flex-col">
+                        <p class="text-secondary-dark text-2xl leading-relaxed text-left">Welcome to Transfeminines, we are a non-profit organization foccusing on peer support and expertise on issues pertaining to trans women.</p>
+                        <div class="flex justify-center py-5">
+                            <button class="p-3 w-fit rounded-xl text-xl font-bold font-roboto-condensed text-secondary-dark hover:text-secondary-light bg-secondary-light hover:bg-primary-dark transition duration-300" type="button" name="membership-cta">Become a member >></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="mx-6 my-8 flex flex-row">
+                    <div class="px-8 flex flex-col">
+                        <p class="text-secondary-dark text-2xl leading-relaxed text-right">Additionally, we offer advice and information to government officials, informing government policy and helping improve transgender women's life.</p>
+                        <div class="flex justify-center py-5">
+                            <button class="p-3 w-fit rounded-xl text-xl font-bold font-roboto-condensed text-secondary-dark hover:text-secondary-light bg-secondary-light hover:bg-primary-dark transition duration-300" type="button" name="contact-cta">Contact us >></button>
+                        </div>
+                    </div>
+                    <img src="{% static 'media/parliament.jpg' %}" alt="placeholder" class="h-52 w-full object-cover rounded-lg">
+                </div>
+                <div class="border-2 border-primary-dark rounded"></div>
+                <div class="mx-6 my-8 grid grid-cols-2 gap-8">
+                    <button class="group px-12 flex flex-row">
+                        <div class="flex items-center">
+                            <p class="text-secondary-dark text-xl leading-relaxed text-center">Check our meetings page for information on peer support groups currently ongoin.</p>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-24 h-24 rounded-xl bg-secondary-light group-hover:bg-primary-dark transition duration-300">
+                                <div class="m-2 w-20 h-20 bg-contain bg-no-repeat bg-center bg-open-dark group-hover:bg-open-light transition duration-300"></div>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="group px-12 flex flex-row">
+                        <div class="flex items-center">
+                            <p class="text-secondary-dark text-xl leading-relaxed text-center">Check our blog for events, statements, news and other content.</p>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-24 h-24 rounded-xl bg-secondary-light group-hover:bg-primary-dark transition duration-300">
+                                <div class="m-2 w-20 h-20 bg-contain bg-no-repeat bg-center bg-open-dark group-hover:bg-open-light transition duration-300"></div>
+                            </div>
+                        </div>
+                    </button>
+                </div>
             </div>
         </div>
     </div>

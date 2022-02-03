@@ -10,3 +10,5 @@ __pycache__
 staticfiles
 
 placeholder.webp
+*.jpg
+open_icon_*.png

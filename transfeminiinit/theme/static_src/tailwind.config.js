@@ -47,6 +47,10 @@ module.exports = {
                 'roboto-condensed': ['"Roboto Condensed"', 'sans-serif'],
                 'ubuntu': ['Ubuntu', 'sans-serif'],
             },
+            backgroundImage: {
+                'open-dark': "url('/static/media/open_icon_secondary_dark.png')",
+                'open-light': "url('/static/media/open_icon_secondary_light.png')",
+            },
         },
         colors: {
             primary: {
