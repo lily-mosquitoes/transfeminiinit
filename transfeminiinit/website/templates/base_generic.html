@@ -60,7 +60,21 @@
     <main class="flex-grow font-ubuntu">
         {% block content %}{% endblock %}
     </main>
-    <footer class="fixed bottom-0 w-full bg-secondary-dark py-3 px-0 xl:px-4">
+    <section class="w-full bg-secondary-dark font-ubuntu">
+        <div class="mb-16 px-9 py-9 flex flex-col items-center space-y-5">
+            <div class="flex flex-row space-x-6">
+                <a class="text-secondary-light hover:text-primary-dark" href="#">info</a>
+                <a class="text-secondary-light hover:text-primary-dark" href="#">membership</a>
+                <a class="text-secondary-light hover:text-primary-dark" href="#">contact</a>
+                <a class="text-secondary-light hover:text-primary-dark" href="#">meetings</a>
+                <a class="text-secondary-light hover:text-primary-dark" href="#">blog</a>
+            </div>
+            <div class="flex flex-row">
+                <p class="text-secondary-light">Transfeminiinit ry.©2022 • Made by <a href="https://github.com/lily-mosquitoes"><u>Lílian</u></a></p>
+            </div>
+        </div>
+    </section>
+    <footer class="fixed bottom-0 w-full bg-secondary-dark py-3 px-0 xl:px-4 font-ubuntu">
         <div class="flex">
             {% get_language_list as language_list %}
             {% for language in language_list %}
@@ -68,7 +82,7 @@
             <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
                 <input type="hidden" name="next" value="{{ tr_url }}">
                 <input type="hidden" name="language" value="{{ language.code }}">
-                <input type="submit" value="{{ language.name }}" class="block px-5 text-secondary-light hover:text-primary-dark font-ubuntu">
+                <input type="submit" value="{{ language.name }}" class="block px-5 text-secondary-light hover:text-primary-dark">
             </form>
             {% endfor %}
         </div>
